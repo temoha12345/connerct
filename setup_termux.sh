@@ -12,7 +12,7 @@ echo "[!] SSH запущен. Задай пароль командой 'passwd',
 # Собираем инфу о модели, батарее и IP
 model=$(getprop ro.product.model)
 battery=$(termux-battery-status | grep percentage | awk '{print $2}')
-ip=$(curl -s ifconfig.me)
+ip=$(ifconfig wlan0 | grep 'inet ' | awk '{print $2}')
 sys_info="Device: $model | Battery: $battery | IP: $ip"
 
 # 4. Шифрование в Base64
